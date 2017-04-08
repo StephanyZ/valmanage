@@ -46,15 +46,18 @@ String postcode=request.getParameter("postcode");
 String sendtime=request.getParameter("sendtime");
 String requireddrawtime=request.getParameter("requireddrawtime");
 String valnumber=null;
+String reportno=null;
+String standard=null;
+String appearance=null;
+String equipindex=null;
+String acceptno=null;
 
 String add_valinformation="insert into val_information values("+productno+","+manufacture+","+valnumber+","+valvecate+","+media+","+diapress+","+diameter+","+valdiameter+","+requiredpress+","+pressgrade+","+outputtime+","+revise+","+manucode+","+designpress+","+designtemper+","+valvepno+","+reseatpress+","+inportvalve+","+svalve+")";
 String add_usefactory="insert into userfactory values("+factoryindex+","+factory+","+address+","+postcode+","+contact+"，"+telephone+")";
+String add_checkorder="insert into checkorder values("+acceptno+","+valnumber+","+factoryindex+","+equipindex+","+valvecate+","+appearance+","+sendtime+","+requireddrawtime+","+standard+","+reportno+")";
 
 
 %>
-	<p>
-		出场编号：<%=productno %>
-		manufacture:<%=manufacture %>
-	</p>
+
 </body>
 </html>
