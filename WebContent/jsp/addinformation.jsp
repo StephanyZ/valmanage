@@ -41,13 +41,15 @@ String address=request.getParameter("address");
 
 String contact=request.getParameter("contact");
 String telephone=request.getParameter("telephone");
+String postcode=request.getParameter("postcode");
 
 String sendtime=request.getParameter("sendtime");
 String requireddrawtime=request.getParameter("requireddrawtime");
 String valnumber=null;
 
 String add_valinformation="insert into val_information values("+productno+","+manufacture+","+valnumber+","+valvecate+","+media+","+diapress+","+diameter+","+valdiameter+","+requiredpress+","+pressgrade+","+outputtime+","+revise+","+manucode+","+designpress+","+designtemper+","+valvepno+","+reseatpress+","+inportvalve+","+svalve+")";
-String add_usefactory="insert into userfactory values("+factoryindex+","+factory+","+address+","+postcode+","+contact+")";
+String add_usefactory="insert into userfactory values("+factoryindex+","+factory+","+address+","+postcode+","+contact+"，"+telephone+")";
+
 
 %>
 	<p>
