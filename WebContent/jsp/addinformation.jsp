@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page
-	import="java.sql.*,java.sql.Connection,java.sql.Statement,java.util.Formatter"%>
+	import="java.sql.*,java.sql.Connection,java.sql.Statement,java.util.Formatter,java.text.ParseException,java.text.SimpleDateFormat,java.util.Calendar,java.util.Date"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -53,8 +53,19 @@ String equipindex=null;
 String acceptno=null;
 
 String add_valinformation="insert into val_information values("+productno+","+manufacture+","+valnumber+","+valvecate+","+media+","+diapress+","+diameter+","+valdiameter+","+requiredpress+","+pressgrade+","+outputtime+","+revise+","+manucode+","+designpress+","+designtemper+","+valvepno+","+reseatpress+","+inportvalve+","+svalve+")";
-String add_usefactory="insert into userfactory values("+factoryindex+","+factory+","+address+","+postcode+","+contact+"，"+telephone+")";
+String add_userfactory="insert into userfactory values("+factoryindex+","+factory+","+address+","+postcode+","+contact+"，"+telephone+")";
 String add_checkorder="insert into checkorder values("+acceptno+","+valnumber+","+factoryindex+","+equipindex+","+valvecate+","+appearance+","+sendtime+","+requireddrawtime+","+standard+","+reportno+")";
+
+//get valnumber
+String select_valinformation="select * from val_information";
+ResultSet rs_select_valinformation=null;
+rs_select_valinformation=connect.query(select_valinformation);
+int valinfocount=0;
+
+//get acceptno
+SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+Date d=new Date();
+acceptno = sdf.format(d);
 
 
 %>
