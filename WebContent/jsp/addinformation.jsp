@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page
-	import="java.sql.*,java.sql.Connection,java.sql.Statement,java.util.Formatter,java.text.ParseException,java.text.SimpleDateFormat,java.util.Calendar,java.util.Date"%>
+	import="java.sql.*,java.sql.Connection,java.sql.Statement,java.util.Formatter,java.text.ParseException,java.text.SimpleDateFormat,java.util.Calendar,java.util.Date,java.text.DecimalFormat"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -61,12 +61,27 @@ String select_valinformation="select * from val_information";
 ResultSet rs_select_valinformation=null;
 rs_select_valinformation=connect.query(select_valinformation);
 int valinfocount=0;
+while(rs_select_valinformation.next()){
+	valinfocount++;
+}
+valinfocount++;
+
+
+ResultSet rs_select_valnum=connect.query("select * from val_information where valnumber=\""+valnumber+"\"");
+while(rs_select_valnum.next()){
+	valinfocount++;
+	rs_select_valnum=connect.query("select * from val_information where valnumber=\""+valnumber+"\"");
+}
+String STR_FORMAT = "00000000";
+DecimalFormat df = new DecimalFormat(STR_FORMAT);
+
+valnumber=df.format(valinfocount);
 
 //get acceptno
 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 Date d=new Date();
 acceptno = sdf.format(d);
-
+%>valnum=<%=valnumber %> acceptno=<%=acceptno %><%
 
 %>
 
